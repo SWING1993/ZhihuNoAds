@@ -1,6 +1,6 @@
+# export THEOS_DEVICE_IP = 192.168.31.11
 export THEOS_DEVICE_IP = 192.168.31.120
 export THEOS_DEVICE_PORT = 2222
-export THEOS_DEVICE_PASSWORD = 2222
 export TARGET = iphone:clang:latest:15.0
 
 THEOS_PACKAGE_SCHEME=rootless

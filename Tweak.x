@@ -14,6 +14,7 @@
 
 @end
 
+/*
 %hook ZHFeedsContainerExploreAViewController
 - (void)viewDidLoad {
     %log;
@@ -28,6 +29,7 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 %end
+*/
 
 %hook ZHMorphAPIModel
 
