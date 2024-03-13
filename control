@@ -2,7 +2,7 @@ Package: com.swing.zhihu
 Name: ZhihuNoAds
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: 知乎去广告
 Maintainer: SWING
 Author: SWING
 Section: Tweaks
