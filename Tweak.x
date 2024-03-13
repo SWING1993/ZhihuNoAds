@@ -1,35 +1,44 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZHFeedsContainerExploreAViewController : UIViewController {
-
-}
+@interface ZHFeedsContainerExploreAViewController: UIViewController
 - (void)handleAdDisappeared;
-
+- (void)showAlertController;
 @end
 
-@interface ZHLaunchAD : NSObject
-
+@interface ZHLaunchAD: NSObject
 - (void)finish;
-
 @end
 
-/*
+
 %hook ZHFeedsContainerExploreAViewController
 - (void)viewDidLoad {
     %log;
     %orig;
+	//[self handleAdDisappeared];
+     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"block-ad-alert"]) {
+        [self showAlertController];
+    }
+}
 
-	[self handleAdDisappeared];
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"测试微博去广告插件" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+%new
+- (void)showAlertController {
+    NSString *alertTitle = @"知乎去广告插件";
+    NSString *alertMessage = @"由SWING开发";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"不再提醒" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"block-ad-alert"];
     }];
     [alertController addAction:okAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
 %end
-*/
+
 
 %hook ZHMorphAPIModel
 
